@@ -1,0 +1,30 @@
+﻿@using VirtoCommerce.Platform.Web
+<!DOCTYPE html>
+<html lang="en" ng-app="platformWebApp">
+<head>
+    <meta charset="utf-8" />
+    <title>Virto Commerce @ViewBag.Title</title>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> -->
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <!-- Google fonts -->
+    <link href='//fonts.googleapis.com/css?family=Exo+2:400,300,500,600,400italic&amp;subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+    @Styles.Render(Startup.VirtualRoot + "/css/core")
+    @Styles.Render(Startup.VirtualRoot + "/css/modules")
+    @*<script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/3.4.0/es5-shim.min.js"></script>*@
+
+    <meta name="viewport" content="width=device-width" />
+    <base href="~/" />
+	@Html.Partial("_FacebookTrackerPartial")
+</head>
+<body ng-class="{'has-demo-warning' : demoResetTime, 'lang-rtl': isRTL}" ng-controller="platformWebApp.appCtrl" ng-init="platformVersion ='@(Model.PlatformVersion)'; demoCredentials = @(Model.DemoCredentials); demoResetTime = @(Model.DemoResetTime);">
+  
+    @Html.Partial("_GoogleAnalyticsPartial")
+    @RenderBody()
+
+    @Scripts.Render(Startup.VirtualRoot + "/scripts/angular")
+    @Scripts.Render(Startup.VirtualRoot + "/scripts/modules")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
